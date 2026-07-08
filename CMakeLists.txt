@@ -894,8 +894,6 @@ ENABLE_TESTING()
 
 # Process subdirectories
 add_subdirectory ( src )
-add_subdirectory ( test )
-add_subdirectory ( doc )
 
 # pkg-config support
 set ( prefix "${CMAKE_INSTALL_PREFIX}" )
