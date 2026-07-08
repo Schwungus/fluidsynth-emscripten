@@ -129,11 +129,12 @@ unset ( EMSCRIPTEN_SUPPORT CACHE )
 if ( CMAKE_SYSTEM_NAME MATCHES "Emscripten" )
     option ( enable-separate-wasm "generate separate .wasm file" off )
     set ( EMSCRIPTEN_SUPPORT on )
-    set ( enable-network off )
-    set ( enable-readline off )
-    set ( enable-threads off )
-    set ( osal "embedded" )
 endif ( CMAKE_SYSTEM_NAME MATCHES "Emscripten" )
+
+set ( enable-network off )
+set ( enable-readline off )
+set ( enable-threads off )
+set ( osal "embedded" )
 
 # the default C standard to use for all targets
 set(CMAKE_C_STANDARD 90)
