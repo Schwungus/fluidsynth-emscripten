@@ -474,6 +474,11 @@ if ( OPENSLES_SUPPORT )
     target_link_libraries( libfluidsynth-OBJ PUBLIC OpenSLES::OpenSLES )
 endif ( OPENSLES_SUPPORT )
 
+# NOTE: NEVER REMOVE THIS!!!!!!!!!
+install( TARGETS libfluidsynth-OBJ
+    EXPORT FluidSynthTargets
+    OBJECTS )
+
 # Here are applied/linked the OBJECT library dependencies
 target_link_libraries ( libfluidsynth PRIVATE libfluidsynth-OBJ )
 
