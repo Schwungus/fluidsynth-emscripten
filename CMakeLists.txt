@@ -137,7 +137,7 @@ set ( enable-threads off )
 set ( osal "embedded" )
 
 # the default C standard to use for all targets
-set(CMAKE_C_STANDARD 90)
+set(CMAKE_C_STANDARD 11)
 
 # the default C++ standard to use for all targets
 set(CMAKE_CXX_STANDARD 98)

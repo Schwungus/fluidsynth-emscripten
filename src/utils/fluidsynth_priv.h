@@ -248,34 +248,10 @@ do { strncpy(_dst,_src,_n-1); \
 #define FLUID_SPRINTF                sprintf
 #define FLUID_FPRINTF                fprintf
 
-#if (defined(_WIN32) && _MSC_VER < 1900) || defined(MINGW32)
-/* need to make sure we use a C99 compliant implementation of (v)snprintf(),
- * i.e. not microsofts non compliant extension _snprintf() as it doesn't
- * reliably null-terminate the buffer
- */
-#define FLUID_SNPRINTF           g_snprintf
-#else
 #define FLUID_SNPRINTF           snprintf
-#endif
-
-#if (defined(_WIN32) && _MSC_VER < 1500) || defined(MINGW32)
-#define FLUID_VSNPRINTF          g_vsnprintf
-#else
 #define FLUID_VSNPRINTF          vsnprintf
-#endif
-
-#if defined(_WIN32) && !defined(MINGW32)
-#define FLUID_STRCASECMP         _stricmp
-#else
 #define FLUID_STRCASECMP         strcasecmp
-#endif
-
-#if defined(_WIN32) && !defined(MINGW32)
-#define FLUID_STRNCASECMP         _strnicmp
-#else
 #define FLUID_STRNCASECMP         strncasecmp
-#endif
-
 
 #define fluid_clip(_val, _min, _max) \
 { (_val) = ((_val) < (_min))? (_min) : (((_val) > (_max))? (_max) : (_val)); }
