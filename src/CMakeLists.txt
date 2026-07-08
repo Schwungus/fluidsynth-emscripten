@@ -291,13 +291,6 @@ if ( MACOSX_FRAMEWORK )
   file ( TOUCH ${MACOSX_FRAMEWORK_SOURCE_HACK} )
 endif ( MACOSX_FRAMEWORK )
 
-if ( EMSCRIPTEN_SUPPORT )
-  if ( BUILD_SHARED_LIBS )
-    add_executable ( libfluidsynth $<TARGET_OBJECTS:libfluidsynth-OBJ> )
-  else ( BUILD_SHARED_LIBS )
-    add_library ( libfluidsynth $<TARGET_OBJECTS:libfluidsynth-OBJ> )
-  endif ( BUILD_SHARED_LIBS )
-else ( EMSCRIPTEN_SUPPORT )
 # Note: by default this target creates a shared object (or dll). To build a
 # static library instead, set the option BUILD_SHARED_LIBS to FALSE.
 # Further note: The headers must be explicitly added here to have CMake install
@@ -308,7 +301,6 @@ add_library ( libfluidsynth
     ${public_HEADERS}
     ${MACOSX_FRAMEWORK_SOURCE_HACK}
 )
-endif ( EMSCRIPTEN_SUPPORT )
 
 if ( MACOSX_FRAMEWORK )
     set_source_files_properties ( ${public_HEADERS}
