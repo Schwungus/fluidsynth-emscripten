@@ -302,6 +302,8 @@ add_library ( libfluidsynth
     ${MACOSX_FRAMEWORK_SOURCE_HACK}
 )
 
+add_library(FluidSynth::libfluidsynth ALIAS libfluidsynth)
+
 if ( MACOSX_FRAMEWORK )
     set_source_files_properties ( ${public_HEADERS}
          PROPERTIES MACOSX_PACKAGE_LOCATION Headers/fluidsynth
