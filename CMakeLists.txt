@@ -952,10 +952,6 @@ endif ( NOT BUILD_SHARED_LIBS )
 # support generating a config.cmake file for both the installed
 # package and for using the build directory directly.
 configure_file(FluidSynthConfig.cmake.in FluidSynthConfig.cmake @ONLY)
-install(FILES "${FluidSynth_BINARY_DIR}/FluidSynthConfig.cmake"
-              "${FluidSynth_BINARY_DIR}/FluidSynthConfigVersion.cmake"
-              ${EXTRA_STATIC_MODULES}
-    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/fluidsynth")
 
 # Extra targets for Unix build environments
 if ( UNIX )

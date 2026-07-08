@@ -474,12 +474,6 @@ if ( OPENSLES_SUPPORT )
     target_link_libraries( libfluidsynth-OBJ PUBLIC OpenSLES::OpenSLES )
 endif ( OPENSLES_SUPPORT )
 
-# This doesn't install any object file at all!
-# it is only a trick for exporting targets
-install( TARGETS libfluidsynth-OBJ
-    EXPORT FluidSynthTargets
-    OBJECTS )
-
 # Here are applied/linked the OBJECT library dependencies
 target_link_libraries ( libfluidsynth PRIVATE libfluidsynth-OBJ )
 
@@ -578,6 +572,8 @@ else ( MACOSX_FRAMEWORK )
    install ( FILES ${public_main_HEADER} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} )
 endif ( MACOSX_FRAMEWORK )
 
+endif ( NOT EMSCRIPTEN_SUPPORT )
+
 # Exported targets.
 
 # build_interface: for the libfluidsynth target when imported from the build directory.
@@ -586,15 +582,6 @@ target_include_directories(libfluidsynth PUBLIC
     "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include/;${PROJECT_BINARY_DIR}/include/>"
     "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
 )
-
-# installation of the exported targets
-install(EXPORT FluidSynthTargets
-        FILE FluidSynthTargets.cmake
-        NAMESPACE FluidSynth::
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/fluidsynth
-)
-
-endif ( NOT EMSCRIPTEN_SUPPORT )
 
 # ******* Auto Generated Lookup Tables ******
 
